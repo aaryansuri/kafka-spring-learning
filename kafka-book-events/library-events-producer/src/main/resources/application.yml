@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+---
+spring:
+  profiles: local
+  kafka:
+    template:
+      default-topic: library-events
+    producer:
+      bootstrap-servers: 192.168.29.105:9092, 192.168.29.105:9093, 192.168.29.105:9094
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 10
+      acks: all
+    admin:
+      properties:
+        bootstrap.servers: 192.168.29.105:9092, 192.168.29.105:9093, 192.168.29.105:9094
+
+
